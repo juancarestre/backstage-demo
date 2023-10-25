@@ -1,0 +1,34 @@
+version: '3'
+services:
+  backstage:
+    image: backstage
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "npm run start-nodemon"
+    volumes:
+      - '/app/node_modules'
+      - ./:/app
+    ports:
+      - "7007:7007"
+      - "3000:7007"
+    networks:
+      backstage:
+        aliases:
+          - backstage
+  postgresql:
+    image: postgres:15.4
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=postgres
+    networks:
+      backstage:
+        aliases:
+          - postgresql
+    volumes:
+      - ./pgsql-backstage:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+networks:
+  backstage:

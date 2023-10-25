@@ -1,0 +1,7 @@
+{
+    "events": {
+        "restart": "fuser -k 7007/tcp ; fuser -k 3000/tcp"
+    },
+    "watch": ["packages/**", "./app-config.local.yaml", "./app-config.yaml", ".env"],
+    "delay": "1500"
+  }
