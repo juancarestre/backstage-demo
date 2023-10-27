@@ -24,6 +24,8 @@ import {
   Page,
 } from '@backstage/core-components';
 import { useApi } from '@backstage/core-plugin-api';
+// import { ToolSearchResultListItem } from '@backstage/plugin-explore';
+// import BuildIcon from '@material-ui/icons/Build';
 
 const useStyles = makeStyles((theme: Theme) => ({
   bar: {
@@ -111,6 +113,26 @@ const SearchPage = () => {
           <Grid item xs={9}>
             <SearchPagination />
             <SearchResult>
+
+            {/* {({ results }) => (
+              <List>
+                {results.map(({ type, document, highlight, rank }) => {
+                  switch (type) {
+                  case 'tools':
+                    return (
+                      <ToolSearchResultListItem
+                        icon={<BuildIcon />}
+                        key={document.location}
+                        result={document}
+                        highlight={highlight}
+                        rank={rank}
+                      />
+                    );
+                  }
+                })}
+              </List>
+            )} */}
+
               <CatalogSearchResultListItem icon={<CatalogIcon />} />
               <TechDocsSearchResultListItem icon={<DocsIcon />} />
             </SearchResult>

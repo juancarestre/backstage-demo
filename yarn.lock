@@ -2869,6 +2869,62 @@
   dependencies:
     "@backstage/backend-plugin-api" "^0.6.6"
 
+"@backstage/plugin-explore-backend@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-explore-backend/-/plugin-explore-backend-0.0.16.tgz#c6bc9e930fbc5d006d60a207bdac525081199946"
+  integrity sha512-kIcwWfPA0iweF3WtMdO1TK6cUvGAkbBvkBfaZ1TV2zsVSX7GfB2nLW5IejMoPsI2CrbFjatpry5DnVAl3KT7mA==
+  dependencies:
+    "@backstage/backend-common" "^0.19.8"
+    "@backstage/config" "^1.1.1"
+    "@backstage/plugin-explore-common" "^0.0.2"
+    "@backstage/plugin-search-backend-module-explore" "^0.1.10"
+    "@backstage/plugin-search-common" "^1.2.7"
+    "@backstage/types" "^1.1.1"
+    "@types/express" "*"
+    express "^4.18.1"
+    express-promise-router "^4.1.0"
+    lodash "^4.17.21"
+    node-fetch "^2.6.7"
+    winston "^3.2.1"
+    yn "^4.0.0"
+
+"@backstage/plugin-explore-common@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-explore-common/-/plugin-explore-common-0.0.2.tgz#a8ac9cb781aafe30e3d4248f41053e955fc7a32e"
+  integrity sha512-6mpsNDUSauh0/7jnnVtbbaMOWvH1449zPNOUQRSdtwDDB42KbbAc7235zi1+x0ryvKxYVKIu+cBhyL0BLL12MA==
+
+"@backstage/plugin-explore-react@^0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-explore-react/-/plugin-explore-react-0.0.32.tgz#27924f1914771f9ecd3ad5c981669e26ce359f33"
+  integrity sha512-wDBIwYtbJl4bAKb9csTbgjbtqdv1AmyRYulMvpAIBc/fuqydO64JysROefpJSM14OyxrQIRcUnCL/lCnUrk2cg==
+  dependencies:
+    "@backstage/core-plugin-api" "^1.7.0"
+    "@backstage/plugin-explore-common" "^0.0.2"
+
+"@backstage/plugin-explore@^0.4.11":
+  version "0.4.11"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-explore/-/plugin-explore-0.4.11.tgz#3be7df2a654c5d323ab6ba272e4d18981ca96f33"
+  integrity sha512-rgMZA2afGihXSSm+x8/8JWhiIg+45bfdXujEWLNXk1zBj+xoTQMhSVTixs4ufaRwbxmNVgS4HDTVtNja9VQnfw==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.3"
+    "@backstage/core-components" "^0.13.6"
+    "@backstage/core-plugin-api" "^1.7.0"
+    "@backstage/errors" "^1.2.3"
+    "@backstage/frontend-plugin-api" "^0.2.0"
+    "@backstage/plugin-catalog-react" "^1.8.5"
+    "@backstage/plugin-explore-common" "^0.0.2"
+    "@backstage/plugin-explore-react" "^0.0.32"
+    "@backstage/plugin-search-common" "^1.2.7"
+    "@backstage/plugin-search-react" "^1.7.1"
+    "@backstage/theme" "^0.4.3"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    classnames "^2.2.6"
+    pluralize "^8.0.0"
+    react-use "^17.2.4"
+
 "@backstage/plugin-github-actions@^0.6.6":
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-github-actions/-/plugin-github-actions-0.6.6.tgz#93612024e0a51b34ab031c4a6847080833026fb2"
@@ -3183,6 +3239,21 @@
     "@backstage/plugin-permission-common" "^0.7.9"
     "@backstage/plugin-search-backend-node" "^1.2.10"
     "@backstage/plugin-search-common" "^1.2.7"
+
+"@backstage/plugin-search-backend-module-explore@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-search-backend-module-explore/-/plugin-search-backend-module-explore-0.1.10.tgz#84022e56581817e5048d21659d5f1e45dd409fd7"
+  integrity sha512-iSC/VYXsuX5lkCxGJjNb8k+9adGjwbHvl3BhNQgGD4i7VR4Y9+cn+2OVwALkbTR42YrhupoO4O13VDaV8NEPkQ==
+  dependencies:
+    "@backstage/backend-common" "^0.19.8"
+    "@backstage/backend-plugin-api" "^0.6.6"
+    "@backstage/backend-tasks" "^0.5.11"
+    "@backstage/config" "^1.1.1"
+    "@backstage/plugin-explore-common" "^0.0.2"
+    "@backstage/plugin-search-backend-node" "^1.2.10"
+    "@backstage/plugin-search-common" "^1.2.7"
+    node-fetch "^2.6.7"
+    winston "^3.2.1"
 
 "@backstage/plugin-search-backend-module-pg@^0.5.15":
   version "0.5.15"
@@ -8258,6 +8329,9 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/plugin-catalog-graph" "^0.2.37"
     "@backstage/plugin-catalog-import" "^0.10.1"
     "@backstage/plugin-catalog-react" "^1.8.5"
+    "@backstage/plugin-explore" "^0.4.11"
+    "@backstage/plugin-explore-backend" "^0.0.16"
+    "@backstage/plugin-explore-common" "^0.0.2"
     "@backstage/plugin-github-actions" "^0.6.6"
     "@backstage/plugin-org" "^0.6.15"
     "@backstage/plugin-permission-react" "^0.4.16"
@@ -11763,7 +11837,7 @@ express-session@^1.17.1:
     safe-buffer "5.2.1"
     uid-safe "~2.1.5"
 
-express@^4.17.1, express@^4.17.3, express@^4.18.2:
+express@^4.17.1, express@^4.17.3, express@^4.18.1, express@^4.18.2:
   version "4.18.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.18.2.tgz#3fabe08296e930c796c19e3c516979386ba9fd59"
   integrity sha512-5/PsL6iGPdfQ/lKM1UuielYgv3BUoJfz1aUwU9vHZ+J7gyvwdQXFEBIEIaxeGf0GIcreATNyBExtalisDbuMqQ==
