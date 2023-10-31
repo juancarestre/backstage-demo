@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: AdminWebPage
+  description: The place to be the admin
+  links:
+    - url: https://admin.hesitationgames.com
+      icon: webpage
+spec:
+  type: website
+  lifecycle: production
+  system: internal-tools
+  owner: devs
+  dependsOn:
+    - resource:default/staging-postgres-cluster
+  consumesApis:
+    - admin-api

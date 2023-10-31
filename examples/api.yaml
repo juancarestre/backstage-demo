@@ -1,0 +1,175 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: admin-api
+  description: The admin api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:backends
+  system: internal-tools
+  dependsOn:
+    - resource:default/staging-postgres-cluster
+  definition: |
+    openapi: "3.0.1"
+    info:
+      title: "admin-api"
+      description: "API de administración hipotética"
+      version: "V0.1.0"
+    servers:
+      - url: https://{API_URI}/
+        variables:
+          API_URI:
+            default: admin-api.example.com
+            description: URL de la API de administración
+    paths:
+      /admin/users:
+        get:
+          summary: "Obtener lista de usuarios"
+          description: "Obtiene una lista de usuarios registrados en la aplicación."
+          responses:
+            "200":
+              description: "Lista de usuarios exitosamente obtenida."
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/UserList"
+      /admin/users/{userId}:
+        get:
+          summary: "Obtener detalles de usuario"
+          description: "Obtiene detalles de un usuario específico."
+          parameters:
+            - name: userId
+              in: path
+              required: true
+              description: "ID del usuario"
+              schema:
+                type: integer
+                format: int64
+          responses:
+            "200":
+              description: "Detalles de usuario exitosamente obtenidos."
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/User"
+            "404":
+              description: "Usuario no encontrado."
+
+    components:
+      schemas:
+        User:
+          type: object
+          properties:
+            userId:
+              type: integer
+              format: int64
+              description: "ID del usuario."
+            username:
+              type: string
+              description: "Nombre de usuario."
+            email:
+              type: string
+              format: email
+              description: "Dirección de correo electrónico."
+          required:
+            - userId
+            - username
+            - email
+        UserList:
+          type: array
+          items:
+            $ref: "#/components/schemas/User"
+
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: hello-api
+  description: A very basic hello api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: user:juancarestre
+  system: internal-tools
+  definition: |
+    openapi: "3.0.1"
+    info:
+      title: "test-x-api"
+      description: "Hello word"
+      version: "V0.0.1"
+    servers:
+    - url: https://{API_URI}/
+      variables:
+        API_URI:
+          default: y9ggm5si49.execute-api.us-west-2.amazonaws.com/latest
+          description: API_URI. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac arcu id libero lacinia congue. Nulla facilisi. Proin sagittis, velit eu accumsan auctor, quam ex viverra purus, vel tincidunt risus elit nec nunc. Sed sed mauris vitae orci egestas gravida in non ex. Etiam in ante a libero iaculis vulputate. Nulla facilisi. Morbi nec ultrices purus. Fusce dictum consectetur libero, ac laoreet velit sollicitudin sit amet. Sed fringilla ex vitae tortor semper, a varius dolor facilisis. Aliquam vel elit at quam scelerisque hendrerit. Nunc non neque ac nisi consequat bibendum vel eu urna.
+    - url: https://{API_URL}/{API_STAGE}/
+      variables:
+        API_URL:
+          default: y9ggm5si49.execute-api.us-west-2.amazonaws.com
+          description: API URL provided by apigateway or custom domain
+        API_STAGE:
+          default: latest
+          description: API stage - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac arcu id libero lacinia congue. Nulla facilisi. Proin sagittis, velit eu accumsan auctor, quam ex viverra purus, vel tincidunt risus elit nec nunc. Sed sed mauris vitae orci egestas gravida in non ex. Etiam in ante a libero iaculis vulputate. Nulla facilisi. Morbi nec ultrices purus. Fusce dictum consectetur libero, ac laoreet velit sollicitudin sit amet. Sed fringilla ex vitae tortor semper, a varius dolor facilisis. Aliquam vel elit at quam scelerisque hendrerit. Nunc non neque ac nisi consequat bibendum vel eu urna.
+    paths:
+      /hello-world:
+        get:
+          summary: "Get hello world"
+          description: "Get datetime with a helloworld message"
+          responses:
+            "200":
+              description: "Returns hello world with datetime"
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/greetingsBodyResponse"
+
+          x-amazon-apigateway-integration:
+            httpMethod: "POST"
+            uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:597701726802:function:test-x-get-hello-world/invocations"
+            passthroughBehavior: "when_no_match"
+            type: "aws_proxy"
+        post:
+          summary: "Post hello world"
+          description: "Post that returns datetime with a helloworld message"
+          requestBody:
+            $ref: '#/components/requestBodies/greetingsBody'
+
+          responses:
+            "200":
+              description: "Returns hello world with datetime"
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/greetingsBodyResponse"
+
+          x-amazon-apigateway-integration:
+            httpMethod: "POST"
+            uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:597701726802:function:test-x-post-hello-world/invocations"
+            passthroughBehavior: "when_no_match"
+            type: "aws_proxy"
+    components:
+      schemas:
+        greetingsBody:
+          type: object
+          properties:
+            greetings:
+              type: string
+          required: ['greetings']
+        greetingsBodyResponse:
+          type: object
+          properties:
+            hello:
+              type: string
+
+      requestBodies:
+        greetingsBody:
+          description: Standard body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/greetingsBody'
+          required: true

@@ -1,0 +1,96 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: SMSCommunicationSystem
+  description: System related with sms messaging system
+spec:
+  owner: group:backends
+  domain: messaging
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: internal-tools
+  description: internal-tools systems
+spec:
+  owner: group:devs
+  domain: b2c
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: QueueSystems
+  description: System related with asynchronous messaging queues
+spec:
+  owner: group:backends
+  domain: messaging
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: BackendAPIs
+  description: Nasty code here
+spec:
+  owner: group:backends
+  domain: b2c
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: BackendAPIs
+  description: Nasty code here
+spec:
+  owner: group:backends
+  domain: b2b
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: B2BAPIs
+  description: The b2b api
+spec:
+  owner: group:sales
+  domain: b2b
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: B2CAPIs
+  description: The B2C api system
+spec:
+  owner: group:b2c
+  domain: b2c
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: UIFiles
+  description: Here you can find ui files
+spec:
+  owner: group:frontends
+  domain: ui-ux
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: DesignSystem
+  description: Here you can find ui-ux react components
+spec:
+  owner: group:frontends
+  domain: ui-ux

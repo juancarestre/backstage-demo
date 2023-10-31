@@ -3,7 +3,7 @@ app:
   baseUrl: http://localhost:3000
 
 organization:
-  name: My Company
+  name: HesitationGames
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -48,21 +48,23 @@ integrations:
     #   token: ${GHE_TOKEN}
 
 proxy:
-  ### Example for how to add a proxy endpoint for the frontend.
-  ### A typical reason to do this is to handle HTTPS and CORS for internal services.
-  # endpoints:
-  #   '/test':
-  #     target: 'https://example.com'
-  #     changeOrigin: true
+  '/self-service/create-db':
+    target: 'https://webhook.site/e881ec3c-3a93-4c75-867f-69a3c59ef634'
+    changeOrigin: true
+    pathRewrite:
+      '^/api/proxy/self-service/create-db': ''
+      '^/api/proxy/self-service/create-db/': ''
+    allowedMethods: ['POST']
+
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
 # and an external cloud storage when deploying TechDocs for production use-case.
 # https://backstage.io/docs/features/techdocs/how-to-guides#how-to-migrate-from-techdocs-basic-to-recommended-deployment-approach
 techdocs:
-  builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'docker' # Alternatives - 'local'
+    runIn: 'local' # Alternatives - 'local'
+  builder: 'local' # Alternatives - 'external'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
@@ -86,7 +88,7 @@ catalog:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
-    - allow: [Component, System, API, Resource, Location]
+    - allow: [Component, System, API, Resource, Location, Template, Group]
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
@@ -103,6 +105,51 @@ catalog:
       target: ../../examples/org.yaml
       rules:
         - allow: [User, Group]
+
+
+    # Local example organizational data
+    - type: file
+      target: ../../examples/api.yaml
+      rules:
+        - allow: [API]
+
+    # Domains
+    - type: file
+      target: ../../examples/domains.yaml
+      rules:
+        - allow: [Component, System, API, Resource, Location, Template, Group, Domain]
+
+    # groups
+    - type: file
+      target: ../../examples/groups.yaml
+      rules:
+        - allow: [Component, System, API, Resource, Location, Template, Group, Domain]
+
+    # Systems
+    - type: file
+      target: ../../examples/systems.yaml
+      rules:
+        - allow: [Component, System, API, Resource, Location, Template, Group, Domain]
+
+    # users
+    - type: file
+      target: ../../examples/users.yaml
+      rules:
+        - allow: [Component, System, API, Resource, Location, Template, Group, Domain, User]
+
+    # users
+    - type: file
+      target: ../../examples/resources.yaml
+      rules:
+        - allow: [Component, System, API, Resource, Location, Template, Group, Domain, User]
+
+    # users
+    - type: file
+      target: ../../examples/components.yaml
+      rules:
+        - allow: [Component, System, API, Resource, Location, Template, Group, Domain, User]
+
+
 
     ## Uncomment these lines to add more example data
     # - type: url

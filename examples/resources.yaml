@@ -1,0 +1,27 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: staging-postgres-cluster
+  description: SQL database for staging
+  links:
+    - url: postgres://miusuario:mipassword@localhost:5432/mi_base_de_datos
+      icon: dashboard
+spec:
+  type: database
+  owner: backends
+  system: BackendAPIs
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: S3-UI-IMAGEs
+  description: Images of designers and cats
+  links:
+    - url: https://mi-bucket-s3.s3-us-west-2.amazonaws.com/
+      icon: bucket
+spec:
+  type: s3-bucket
+  owner: UI
+  system: UIFiles

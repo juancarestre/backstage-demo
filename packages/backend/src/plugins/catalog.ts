@@ -16,7 +16,7 @@ export default async function createPlugin(
       orgUrl: 'https://github.com/hesitationgames',
       logger: env.logger,
       schedule: env.scheduler.createScheduledTaskRunner({
-        frequency: { minutes: 1 },
+        frequency: { minutes: 2 },
         timeout: { minutes: 15 },
       }),
       userTransformer: async (user, ctx) => {

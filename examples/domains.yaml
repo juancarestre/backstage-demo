@@ -1,0 +1,31 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: messaging
+  description: Everything about messaging
+spec:
+  owner: group:backends
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: b2b
+  description: Everything about b2b - blah blah
+spec:
+  owner: group:sales
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: b2c
+  description: Everything about b2c - blah blah
+spec:
+  owner: group:sales
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: UI-UX
+  description: Everything about uiux - UX rules
+spec:
+  owner: group:frontends

@@ -1,0 +1,148 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: C-Level
+  description: C-Levels
+spec:
+  type: c-levels-unit
+  profile:
+    displayName: C-Level
+    email: c@hesitationgames.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  children: []
+  members: [CEO]
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: sales
+  description: sales unit
+spec:
+  type: sales-unit
+  profile:
+    displayName: Sales
+    email: sales@hesitationgames.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  children: [b2b, b2c]
+  members: [jdoe, jdae, foobarb2cman, salesguy]
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: b2b
+  description: The b2b business unit
+spec:
+  type: b2b
+  profile:
+    displayName: b2b
+    email: b2b@hesitationgames.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  parent: sales
+  children: []
+  members: [jdoe, salesguy]
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: b2c
+  description: The b2c business unit
+spec:
+  type: b2c
+  profile:
+    displayName: b2c
+    email: b2c@hesitationgames.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  parent: sales
+  children: []
+  members: [jdae, salesguy, foobarb2cman]
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: UI
+  description: The ui team
+spec:
+  type: ui-unit
+  profile:
+    displayName: UI
+    email: ui@hesitationgames.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  children: []
+  parent: frontends
+  members: [designer, foobarb2cman]
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: UX
+  description: The ux team
+spec:
+  type: ux-unit
+  profile:
+    displayName: UX
+    email: UX@hesitationgames.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  children: []
+  parent: frontends
+  members: [designer, foobarb2cman]
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: managers
+  description: The managers team
+spec:
+  type: management
+  profile:
+    displayName: managers
+    email: managing@hesitationgames.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  children: []
+  parent: devs
+  members: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: PM
+  description: The PM team
+spec:
+  type: PM
+  profile:
+    displayName: PM
+    email: managing@hesitationgames.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  children: []
+  parent: managers
+  members: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: ProductDesigners
+  description: The PM team
+spec:
+  type: ProductDesigners
+  profile:
+    displayName: ProductDesigners
+    email: ProductDesigners@hesitationgames.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  children: []
+  parent: managers
+  members: []

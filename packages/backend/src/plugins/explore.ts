@@ -9,11 +9,17 @@ import {
   // List of tools you want to surface in the Explore plugin "Tools" page.
   const exploreTools: ExploreTool[] = [
     {
-      title: 'New Relic',
-      description: 'new relic plugin',
-      url: '/newrelic',
-      image: 'https://i.imgur.com/L37ikrX.jpg',
-      tags: ['newrelic', 'proxy', 'nerdGraph'],
+      title: 'Postman',
+      description: 'postman',
+      url: 'https://www.postman.com/',
+      image: '/postmanlogo.png',
+      tags: ['API', 'HTTP', 'REST'],
+    },    {
+      title: 'Datadog',
+      description: 'Expensive Monitoring',
+      url: 'https://www.datadog.com/',
+      image: '/postmanlogo.png',
+      tags: ['Monitoring', 'Logs', 'Alerting'],
     },
   ];
 
