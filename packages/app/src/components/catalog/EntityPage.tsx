@@ -55,6 +55,11 @@ import {
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
 
+import {
+  EntityAWSLambdaOverviewCard,
+  isAWSLambdaAvailable,
+} from '@roadiehq/backstage-plugin-aws-lambda';
+
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
@@ -122,8 +127,22 @@ const entityWarningContent = (
 );
 
 const overviewContent = (
+
+
+
   <Grid container spacing={3} alignItems="stretch">
     {entityWarningContent}
+
+    <Grid container spacing={3} alignItems="stretch">
+    <EntitySwitch>
+      <EntitySwitch.Case if={e => Boolean(isAWSLambdaAvailable(e))}>
+        <Grid item md={6}>
+          <EntityAWSLambdaOverviewCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+    </Grid>
+
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
@@ -137,6 +156,9 @@ const overviewContent = (
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
+
+
+
   </Grid>
 );
 
@@ -148,6 +170,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/github-actions" title="GitHub Actions">
+      <EntityGithubActionsContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">

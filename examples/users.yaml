@@ -47,3 +47,29 @@ spec:
     email: salesguy@example.com
     picture: https://example.com/staff/jenny-with-party-hat.jpeg
   memberOf: [ui, b2c]
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: designer
+spec:
+  profile:
+    displayName: designer
+    email: designer@example.com
+    picture: https://example.com/staff/jenny-with-party-hat.jpeg
+  memberOf: [ui]
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: ceo
+spec:
+  profile:
+    displayName: ceo
+    email: ceo@example.com
+    picture: https://example.com/staff/jenny-with-party-hat.jpeg
+  memberOf: [c-level]
