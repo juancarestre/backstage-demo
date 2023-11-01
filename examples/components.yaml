@@ -12,6 +12,6 @@ spec:
   system: internal-tools
   owner: devs
   dependsOn:
-    - resource:default/staging-postgres-cluster
+    - resource:default/adminapp-database
   consumesApis:
     - admin-api

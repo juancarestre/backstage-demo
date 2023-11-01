@@ -54,7 +54,7 @@ proxy:
     pathRewrite:
       '^/api/proxy/self-service/create-db': ''
       '^/api/proxy/self-service/create-db/': ''
-    allowedMethods: ['POST']
+    allowedMethods: ['POST', 'GET']
 
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration

@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: staging-postgres-cluster
+  name: adminapp-database
   description: SQL database for staging
   links:
     - url: postgres://miusuario:mipassword@localhost:5432/mi_base_de_datos
@@ -10,7 +10,25 @@ spec:
   type: database
   owner: backends
   system: BackendAPIs
+  dependsOn:
+    - resource:default/staging-postgres-cluster
 
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: staging-postgres-cluster
+  description: SQL cluster for staging
+  links:
+    - url: postgres://miusuario:mipassword@localhost:5432/mi_base_de_datos
+      icon: dashboard
+spec:
+  type: cluster
+  owner: backends
+  system: BackendAPIs
+  dependencyOf:
+    - resource:default/adminapp-database
 ---
 
 apiVersion: backstage.io/v1alpha1

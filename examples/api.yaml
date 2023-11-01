@@ -8,8 +8,6 @@ spec:
   lifecycle: production
   owner: group:backends
   system: internal-tools
-  dependsOn:
-    - resource:default/staging-postgres-cluster
   definition: |
     openapi: "3.0.1"
     info:
