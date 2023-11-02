@@ -1,6 +1,8 @@
 # macOS
 .DS_Store
 
+yarn.lock
+
 pgsql-backstage/
 agithub-app-backstage-platzi-credentials.yaml
 # Logs
