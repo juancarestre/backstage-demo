@@ -17,6 +17,10 @@ FROM node:18-bullseye-slim AS build
 WORKDIR /app
 COPY --from=packages /app .
 
+RUN apt-get update \
+    && apt-get install -y python3 python3-pip make g++ \
+    && pip3 install mkdocs-techdocs-core==1.1.7
+
 RUN yarn install --network-timeout 600000 && rm -rf "$(yarn cache dir)"
 
 COPY . .
