@@ -54,6 +54,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 
 RUN apt-get update && apt-get install -y python3 make g++
 
+RUN yarn global add node-gyp
+
 # Copy the install dependencies from the build stage and context
 COPY --from=build /app/yarn.lock /app/package.json /app/packages/backend/dist/skeleton.tar.gz ./
 RUN tar xzf skeleton.tar.gz && rm skeleton.tar.gz
