@@ -40,7 +40,6 @@
     "@roadiehq/backstage-plugin-aws-lambda": "^2.2.1",
     "@roadiehq/scaffolder-backend-module-http-request": "^4.0.13",
     "app": "link:../app",
-    "better-sqlite3": "^8.0.0",
     "dockerode": "^3.3.1",
     "dotenv": "^16.3.1",
     "express": "^4.17.1",
