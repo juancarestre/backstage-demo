@@ -52,6 +52,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     apt-get install -y --no-install-recommends python3 build-essential && \
     yarn config set python /usr/bin/python3
 
+RUN apt-get update && apt-get install -y python3 make g++
+
 # Copy the install dependencies from the build stage and context
 COPY --from=build /app/yarn.lock /app/package.json /app/packages/backend/dist/skeleton.tar.gz ./
 RUN tar xzf skeleton.tar.gz && rm skeleton.tar.gz
