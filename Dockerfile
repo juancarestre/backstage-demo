@@ -17,7 +17,7 @@ FROM node:18-bullseye-slim AS build
 WORKDIR /app
 COPY --from=packages /app .
 
-RUN yarn install --frozen-lockfile --network-timeout 600000 && rm -rf "$(yarn cache dir)"
+RUN yarn install --network-timeout 600000 && rm -rf "$(yarn cache dir)"
 
 COPY . .
 
