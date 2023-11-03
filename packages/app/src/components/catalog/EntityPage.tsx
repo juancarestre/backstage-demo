@@ -137,7 +137,7 @@ const overviewContent = (
     <EntitySwitch>
       <EntitySwitch.Case if={e => Boolean(isAWSLambdaAvailable(e))}>
         <Grid item md={6}>
-          <EntityAWSLambdaOverviewCard />
+          <EntityAWSLambdaOverviewCard roleArn='arn:aws:iam::597701726802:role/myAmazonEKSNodeRole'/>
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
