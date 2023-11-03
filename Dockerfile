@@ -16,7 +16,6 @@ FROM node:18-bullseye-slim AS build
 
 WORKDIR /app
 COPY --from=packages /app .
-COPY --from=examples /app .
 
 RUN apt-get update \
     && apt-get install -y python3 python3-pip make g++ \
@@ -73,5 +72,5 @@ RUN tar xzf bundle.tar.gz && rm bundle.tar.gz
 
 # Copy any other files that we need at runtime
 COPY app-config.production.yaml ./app-config.yaml
-COPY examples examples
+COPY examples /app/
 # CMD ["node", "packages/backend", "--config", "app-config.yaml"]
