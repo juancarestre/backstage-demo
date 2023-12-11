@@ -49,7 +49,7 @@ integrations:
 
 proxy:
   '/self-service/create-db':
-    target: 'https://webhook.site/e881ec3c-3a93-4c75-867f-69a3c59ef634'
+    target: 'https://webhook.site/e49b71e2-c0a1-4a0c-af06-a648d373eba9'
     changeOrigin: true
     pathRewrite:
       '^/api/proxy/self-service/create-db': ''
