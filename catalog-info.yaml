@@ -1,13 +1,38 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: backstage
-  description: An example of a Backstage application.
-  # Example for optional annotations
-  # annotations:
-  #   github.com/project-slug: backstage/backstage
-  #   backstage.io/techdocs-ref: dir:.
+  name: Backstage-App
+  annotations:
+    backstage.io/kubernetes-id: backstage
+  description: The platform engineering tool backstage
+  links:
+    - url: https://backstage.io
+      icon: webpage
+    - url: https://github.com/juancarestre/backstage-demo
+      icon: webpage
 spec:
   type: website
-  owner: john@example.com
-  lifecycle: experimental
+  lifecycle: production
+  system: internal-tools
+  owner: devs
+  dependsOn:
+    - resource:default/backstage-database
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: backstage-database
+  description: Postgres database for backstage
+  links:
+    - url: postgres://backstage:mipassword@localhost:5432/mi_base_de_datos
+      icon: dashboard
+spec:
+  type: database
+  owner: devs
+  system: internal-tools
+  dependsOn:
+    - resource:default/staging-postgres-cluster
+
+---
