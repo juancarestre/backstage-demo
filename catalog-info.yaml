@@ -11,7 +11,7 @@ metadata:
     - url: https://github.com/juancarestre/backstage-demo
       icon: webpage
 spec:
-  type: website
+  type: service
   lifecycle: production
   system: internal-tools
   owner: devs
