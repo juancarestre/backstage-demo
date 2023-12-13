@@ -33,6 +33,7 @@ import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 import { DefaultIdentityClient } from '@backstage/plugin-auth-node';
 import explore from './plugins/explore';
 import aws from './plugins/aws';
+import kubernetes from './plugins/kubernetes';
 
 
 import 'dotenv/config'
@@ -93,6 +94,7 @@ async function main() {
   const searchEnv = useHotMemoize(module, () => createEnv('search'));
   const appEnv = useHotMemoize(module, () => createEnv('app'));
   const awsEnv = useHotMemoize(module, () => createEnv('aws'));
+  const kubernetesEnv = useHotMemoize(module, () => createEnv('kubernetes'));
 
 
 
@@ -105,6 +107,8 @@ async function main() {
   apiRouter.use('/search', await search(searchEnv));
   apiRouter.use('/explore', await explore(exploreEnv));
   apiRouter.use('/aws', await aws(awsEnv));
+  apiRouter.use('/kubernetes', await kubernetes(kubernetesEnv));
+
 
   // Add backends ABOVE this line; this 404 handler is the catch-all fallback
   apiRouter.use(notFoundHandler());

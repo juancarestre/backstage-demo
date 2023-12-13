@@ -34,5 +34,3 @@ spec:
   system: internal-tools
   dependsOn:
     - resource:default/staging-postgres-cluster
-
----

@@ -32,6 +32,7 @@
     "@backstage/plugin-explore-backend": "^0.0.16",
     "@backstage/plugin-explore-common": "^0.0.2",
     "@backstage/plugin-github-actions": "^0.6.6",
+    "@backstage/plugin-kubernetes": "^0.11.2",
     "@backstage/plugin-org": "^0.6.15",
     "@backstage/plugin-permission-react": "^0.4.16",
     "@backstage/plugin-scaffolder": "^1.15.1",

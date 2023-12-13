@@ -83,6 +83,23 @@ auth:
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
+
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: https://8E2AA09A1B4D70FDB2821683897254DB.gr7.us-east-1.eks.amazonaws.com
+          name: BackstageClusterK8S
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
+          skipMetricsLookup: true
+          caData: ${K8S_CONFIG_CA_DATA}
+          serviceAccountToken: ${SERVICE_ACCOUNT_TOKEN}
+
+
+
 catalog:
   import:
     entityFilename: catalog-info.yaml
